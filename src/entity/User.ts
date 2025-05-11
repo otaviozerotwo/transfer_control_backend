@@ -6,13 +6,13 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ type: 'text', length: 255, name: 'nm_usuario' })
+  @Column({ type: 'text', name: 'nm_usuario' })
   name: string
 
-  @Column({ type: 'text', length: 255, name: 'email_usu' })
+  @Column({ type: 'text', name: 'email_usu' })
   email: string
 
-  @Column({ type: 'text', length: 255, name: 'senha_usu' })
+  @Column({ type: 'text', name: 'senha_usu' })
   password: string
 
   @ManyToOne(() => Status, (status) => status.id)

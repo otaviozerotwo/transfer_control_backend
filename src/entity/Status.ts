@@ -1,11 +1,12 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 
+@Entity()
 export class Status {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ type: 'text', length: 100, name: 'descricao' })
+  @Column({ type: 'text', name: 'descricao' })
   description: string
 
   @OneToMany(() => User, (user) => user.status)

@@ -1,13 +1,17 @@
-import 'dotenv/config';
+import { AppDataSource } from './src/data-source';
 import express from 'express';
 import authRoutes from './src/routes/authRoutes';
 
-const app = express();
-const PORT = process.env.NODE_PORT || 3001;
-// app.use(express.json());
 
-app.use('/auth', authRoutes);
+AppDataSource.initialize().then(() => {
+  const app = express();
+  app.use(express.json());
+  
+  app.use('/auth', authRoutes);
+  
+  const PORT = process.env.NODE_PORT as number | undefined;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  return app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 });
