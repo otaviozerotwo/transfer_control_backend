@@ -1,0 +1,32 @@
+{
+  "name": "transfer_control_backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/otaviozerotwo/transfer_control_backend#readme",
+  "bugs": {
+    "url": "https://github.com/otaviozerotwo/transfer_control_backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otaviozerotwo/transfer_control_backend.git"
+  },
+  "license": "ISC",
+  "author": "Otávio Cardoso",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec ts-node index.ts",
+    "start": "npx ts-node index.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
