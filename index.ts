@@ -1,13 +1,12 @@
 import { AppDataSource } from './src/data-source';
 import express from 'express';
-import authRoutes from './src/routes/authRoutes';
-
+import routes from './src/routes/routes';
 
 AppDataSource.initialize().then(() => {
   const app = express();
   app.use(express.json());
   
-  app.use('/auth', authRoutes);
+  app.use(routes);
   
   const PORT = process.env.NODE_PORT as number | undefined;
 

@@ -6,7 +6,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ type: 'text', name: 'nm_usuario' })
+  @Column({ type: 'text', name: 'nm_usu' })
   name: string
 
   @Column({ type: 'text', name: 'email_usu' })
