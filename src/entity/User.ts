@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Status } from './Status';
 
 @Entity('tb_usuario')
@@ -15,6 +15,7 @@ export class User {
   @Column({ type: 'text', name: 'senha_usu' })
   password: string
 
-  @ManyToOne(() => Status, (status) => status.id)
+  @ManyToOne(() => Status, status => status.users)
+  @JoinColumn({ name: 'status_id' })
   status: Status
 }

@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 
-@Entity()
+@Entity('tb_status')
 export class Status {
   @PrimaryGeneratedColumn()
   id: number
@@ -9,6 +9,6 @@ export class Status {
   @Column({ type: 'text', name: 'descricao' })
   description: string
 
-  @OneToMany(() => User, (user) => user.status)
+  @OneToMany(() => User, user => user.status)
   users: User[]
 }
