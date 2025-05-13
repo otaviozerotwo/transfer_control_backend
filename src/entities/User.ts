@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Status } from './Status';
 
 @Entity('tb_usuario')
@@ -14,6 +14,12 @@ export class User {
 
   @Column({ type: 'text', name: 'senha_usu' })
   password: string
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 
   @ManyToOne(() => Status, status => status.users)
   @JoinColumn({ name: 'status_id' })

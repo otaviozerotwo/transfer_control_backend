@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1747018842876 implements MigrationInterface {
-    name = 'Default1747018842876'
+export class Default1747178840774 implements MigrationInterface {
+    name = 'Default1747178840774'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "tb_status" ("id" int NOT NULL, "descricao" text NOT NULL, CONSTRAINT "PK_9a700eb4b13e49afb1a9117657e" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "tb_usuario" ("id" int NOT NULL IDENTITY(1,1), "nm_usu" text NOT NULL, "email_usu" text NOT NULL, "senha_usu" text NOT NULL, "status_id" int, CONSTRAINT "PK_fea85fa13fe26913a53d66a44db" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "tb_usuario" ("id" int NOT NULL IDENTITY(1,1), "nm_usu" text NOT NULL, "email_usu" text NOT NULL, "senha_usu" text NOT NULL, "createdAt" datetime2 NOT NULL CONSTRAINT "DF_e8fb2d73b2e2a11723ed9ce8700" DEFAULT getdate(), "updatedAt" datetime2 NOT NULL CONSTRAINT "DF_1f890252dc88de08fe9f7adad0c" DEFAULT getdate(), "status_id" int, CONSTRAINT "PK_fea85fa13fe26913a53d66a44db" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "tb_usuario" ADD CONSTRAINT "FK_0daf89e62f31c1f840e8e4b55cb" FOREIGN KEY ("status_id") REFERENCES "tb_status"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
