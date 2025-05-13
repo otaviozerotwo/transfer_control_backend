@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { userRepository } from '../repositories/userRepository';
-import { statusRepository } from '../repositories/statusRepository';
 
 export class UserController {
   async create(req: Request, res: Response): Promise<any>{
@@ -29,4 +28,8 @@ export class UserController {
       return res.status(500).json({ message: 'Internal Server Error' });
     }
   }
+
+  async login() {}
+
+  async getProfile() {}
 }
