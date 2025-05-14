@@ -9,7 +9,7 @@ export class User {
   @Column({ type: 'text', name: 'nm_usu' })
   name: string
 
-  @Column({ type: 'text', name: 'email_usu' })
+  @Column({ name: 'email_usu', unique: true })
   email: string
 
   @Column({ type: 'text', name: 'senha_usu' })
