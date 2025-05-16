@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { userRepository } from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+
 export class UserController {
   async create(req: Request, res: Response): Promise<any>{
     try {
