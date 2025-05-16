@@ -3,6 +3,10 @@ import { userRepository } from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+type JwtPayload = {
+  id: number;
+}
+
 export class UserController {
   async create(req: Request, res: Response): Promise<any>{
     try {
@@ -61,5 +65,9 @@ export class UserController {
     const { password: _, ...userLogin } = user;
 
     return res.json({ user: userLogin, token });
+  }
+
+  async getProfile(req: Request, res: Response): Promise<any> {
+    return res.json(req.user);
   }
 }
