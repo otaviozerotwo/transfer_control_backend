@@ -6,6 +6,8 @@ const routes = Router();
 
 routes.post('/user', new UserController().create);
 routes.post('/login', new UserController().login);
+routes.post('/forgot-password', new UserController().forgotPassword);
+routes.post('/reset-password', new UserController().resetPassword);
 
 routes.use(authMiddleware);
 

@@ -1,27 +1,32 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Status } from './Status';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('tb_usuario')
 export class User {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ type: 'text', name: 'nm_usu' })
+  @Column({ type: 'varchar', length: 255, name: 'nm_usu' })
   name: string
 
-  @Column({ name: 'email_usu', unique: true })
+  @Column({ type: 'varchar', length: 255, name: 'email_usu', unique: true })
   email: string
 
-  @Column({ type: 'text', name: 'senha_usu' })
+  @Column({ type: 'varchar', length: 255, name: 'pass_usu' })
   password: string
 
-  @CreateDateColumn()
+  @Column({ type: 'int', name: 'st_usu', default: 1 })
+  status: number
+
+  @CreateDateColumn({ type: 'datetime' })
   createdAt: Date
-
-  @UpdateDateColumn()
+  
+  @UpdateDateColumn({ type: 'datetime' })
   updatedAt: Date
+  
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  resetPasswordToken: string | null
 
-  @ManyToOne(() => Status, status => status.users)
-  @JoinColumn({ name: 'status_id' })
-  status: Status
+  @Column({ type: 'datetime', nullable: true })
+  resetPasswordExpires: Date | null
+
 }
