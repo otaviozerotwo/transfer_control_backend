@@ -35,7 +35,7 @@ Desenvolvedores e mantenedores da aplicação.
 - TypeORM
 - Express
 - JWT
-- 
+- Resend (email service)
 
 <!-- ## 📂 Estrutura do Projeto
 
