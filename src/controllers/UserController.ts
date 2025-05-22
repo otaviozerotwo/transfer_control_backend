@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import { MoreThan } from 'typeorm';
+import { sendResetPasswordEmail } from '../services/emailService';
 
 export class UserController {
   async create(req: Request, res: Response): Promise<any>{
@@ -87,10 +88,9 @@ export class UserController {
 
       await userRepository.save(user);
       
-      // TODO chamar função de envio de e-mail
+      await sendResetPasswordEmail(user.email, token);
       console.log('token recuperação senha:', token);
       
-
       return res.json({ message: 'E-mail de recuperação enviado com sucesso!' });
     } catch (error) {
       console.log('Erro na solicitação de recuperação de senha:', error);
